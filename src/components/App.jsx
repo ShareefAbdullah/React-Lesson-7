@@ -15,23 +15,25 @@ function App() {
   const [inputText, setText] = useState("");
 
   const addItem = () => {
-    if (inputText === "") {
+    const cleanInput = inputText.trim();
+    const checkDuplicate = cleanInput.toLowerCase();
+
+    if (cleanInput === "") {
       return alert("Please enter a task!");
     }
-
-    const checkItems = todoItems.filter(item => {
-      if (item.text === inputText) {
-        return alert("This item is already on the list!");
-      } 
-        return item;
-    });
     
+    const isDuplicate = todoItems.some(item => item.text.toLowerCase() === checkDuplicate);
+        
+    if (isDuplicate) {
+      return alert("This item is already on the list!");
+    }
+
     setItems([
       {
-        text: inputText,
+        text: cleanInput,
         favorite: false
       },
-        ...checkItems
+        ...todoItems
     ]);
     
     setText("");
