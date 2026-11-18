@@ -1,6 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
+type InitialStateType = {
+  todoItems: Array<{
+    favorite: boolean;
+    text: string;
+  }>;
+};
+
+const initialState: InitialStateType = {
   todoItems: [
     { favorite: false, text: "Buy groceries" },
     { favorite: false, text: "Buy a phone" },
@@ -14,7 +21,7 @@ export const todoSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    deleteItem: (state, action) => {
+    deleteItem: (state, action: PayloadAction<{ index: number }>) => {
       state.todoItems = state.todoItems.filter((_, index) => {
         if (index === action.payload.index) {
           return false;
@@ -22,7 +29,7 @@ export const todoSlice = createSlice({
         return true;
       });
     },
-    makeFavorite: (state, action) => {
+    makeFavorite: (state, action: PayloadAction<{ index: number }>) => {
       state.todoItems = state.todoItems.map((item, index) => {
         if (index === action.payload.index) {
           return {
@@ -33,7 +40,7 @@ export const todoSlice = createSlice({
         return item;
       });
     },
-    addItem: (state, action) => {
+    addItem: (state, action: PayloadAction<string>) => {
       state.todoItems.unshift({
         text: action.payload,
         favorite: false,

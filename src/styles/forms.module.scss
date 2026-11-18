@@ -1,0 +1,23 @@
+.forms {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+
+  input {
+    width: 65%;
+    border: none;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  button {
+    width: 150px;
+    border: none;
+    color: white;
+    background-color: blueviolet;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}

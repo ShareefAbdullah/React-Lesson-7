@@ -3,8 +3,8 @@ import { Header } from "./Header";
 import { Forms } from "./Forms";
 import { AddTodo } from "./AddTodo";
 
-function App() {
-  const [inputText, setText] = useState("");
+export const App: React.FC = () => {
+  const [inputText, setText] = useState<string>("");
 
   return (
     <div className="App">
@@ -13,6 +13,4 @@ function App() {
       <AddTodo />
     </div>
   );
-}
-
-export default App;
+};

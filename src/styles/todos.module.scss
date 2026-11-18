@@ -1,0 +1,45 @@
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+
+  .todoText {
+    flex: 1;
+    font-size: 18px;
+    border-bottom: 1px solid gainsboro;
+  }
+
+  .favorite {
+    margin-right: 20px;
+
+    button {
+      font-size: 24px;
+      border: none;
+      background-color: transparent;
+      padding: 0px;
+      cursor: pointer;
+    }
+  }
+
+  .actions {
+    button {
+      font-size: 24px;
+      color: red;
+      border: none;
+      background-color: transparent;
+      padding: 0px;
+      cursor: pointer;
+    }
+  }
+
+  &.selected {
+    background-color: lemonchiffon;
+
+    .favorite {
+      button {
+        color: gold;
+      }
+    }
+  }
+}

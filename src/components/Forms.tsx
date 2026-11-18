@@ -1,10 +1,16 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../redux/todoSlice";
+import { useTypedDispatch, useTypedSelector } from "../redux/hooks";
+import styles from "../styles/forms.module.scss";
 
-export const Forms = ({ inputText, setText }) => {
-  const dispatch = useDispatch();
-  const todoItems = useSelector((state) => state.todo.todoItems);
+type FormProps = {
+  inputText: string;
+  setText: (value: string) => void;
+};
+
+export const Forms: React.FC<FormProps> = ({ inputText, setText }) => {
+  const dispatch = useTypedDispatch();
+  const todoItems = useTypedSelector((state) => state.todo.todoItems);
 
   const handleSubmit = () => {
     const cleanInput = inputText.trim();
@@ -25,7 +31,7 @@ export const Forms = ({ inputText, setText }) => {
   };
 
   return (
-    <div className="forms">
+    <div className={styles.forms}>
       <input
         type="text"
         placeholder="Add a new item..."
